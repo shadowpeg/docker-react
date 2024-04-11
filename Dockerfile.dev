@@ -1,0 +1,11 @@
+FROM alpine
+
+WORKDIR /opt/app
+COPY package.json .
+RUN apk update
+RUN apk add nodejs npm --update
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "run", "start"]
